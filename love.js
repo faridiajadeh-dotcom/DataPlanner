@@ -877,6 +877,10 @@
     // WhatsApp URL
     const btnWhatsApp = document.getElementById('btnWhatsApp');
     if (btnWhatsApp) {
+      let phoneNum = config.whatsappNumber.replace(/[^0-9]/g, '');
+      if (phoneNum.startsWith('0')) {
+        phoneNum = '62' + phoneNum.slice(1);
+      }
       const waText = encodeURIComponent(
         `Halo ${config.senderName}! Aku udah isi Date Planner kita nih ❤️\n\n` +
         `🎫 *TIKET KENCAN KITA*\n` +
@@ -887,7 +891,7 @@
         `💌 Pesan: "${config.message}"\n\n` +
         `Would you like to go out with me? See you on our date! 🥰`
       );
-      btnWhatsApp.href = `https://wa.me/${config.whatsappNumber.replace(/[^0-9]/g, '')}?text=${waText}`;
+      btnWhatsApp.href = `https://wa.me/${phoneNum}?text=${waText}`;
     }
   }
 
@@ -1113,7 +1117,9 @@
       playClick();
       const fromVal = encodeURIComponent(inputSettingFrom?.value.trim() || config.senderName);
       const toVal = encodeURIComponent(inputSettingTo?.value.trim() || config.targetName);
-      const phoneVal = encodeURIComponent(inputSettingPhone?.value.trim() || config.whatsappNumber);
+      let phoneRaw = (inputSettingPhone?.value.trim() || config.whatsappNumber).replace(/[^0-9]/g, '');
+      if (phoneRaw.startsWith('0')) phoneRaw = '62' + phoneRaw.slice(1);
+      const phoneVal = encodeURIComponent(phoneRaw);
 
       const url = `${window.location.origin}${window.location.pathname}?from=${fromVal}&to=${toVal}&phone=${phoneVal}`;
       navigator.clipboard.writeText(url).then(() => {

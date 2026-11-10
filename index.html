@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>With Love ♥ - Date Planner</title>
-  
+
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💌</text></svg>">
-  
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💌</text></svg>">
+
   <!-- Google Fonts: Nunito (Modern clean), Caveat (Cute cursive), Fredoka (Rounded), VT323 (Retro pixel) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=VT323&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=VT323&display=swap"
+    rel="stylesheet">
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="love.css">
 </head>
+
 <body>
 
   <!-- Floating Particles & Hearts -->
   <div class="bg-particles" id="bgParticles" aria-hidden="true"></div>
-  
+
   <!-- Confetti Explosion Layer -->
   <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
 
   <!-- Top Controls: Sound Toggle & Settings Modal Button -->
   <header class="top-controls">
     <button class="icon-btn" id="btnToggleSound" title="Toggle Suara" aria-label="Toggle Sound">🔔</button>
-    <button class="icon-btn" id="btnOpenSettings" title="Pengaturan Nama & Nomor WhatsApp" aria-label="Settings">⚙️</button>
+    <button class="icon-btn" id="btnOpenSettings" title="Pengaturan Nama & Nomor WhatsApp"
+      aria-label="Settings">⚙️</button>
   </header>
 
   <!-- Main Interactive Scene -->
@@ -37,7 +43,7 @@
          STAGE 1: CUPID'S BOW & ARROW MINI-GAME (AIM & SHOOT)
          ==================================================================== -->
     <section class="stage--aim" id="stageAim" aria-label="Cupid Mini Game">
-      
+
       <!-- Envelope Target -->
       <div class="target-area" id="targetArea" title="Klik atau tembak panah ke amplop!">
         <div class="envelope-wrapper">
@@ -114,11 +120,11 @@
 
         <!-- Inner White Card -->
         <div class="window-inner" id="windowInner">
-          
+
           <!-- State 2A: The Question -->
           <div id="askBox">
             <h2 class="ask-heading">Mau jalan-jalan bareng aku ga?</h2>
-            
+
             <!-- Pixel Art Animated Cat Canvas -->
             <div class="pixel-cat-wrap">
               <canvas id="catCanvas" class="pixel-cat-canvas" width="128" height="112" aria-label="Pixel Cat"></canvas>
@@ -134,7 +140,7 @@
           <!-- State 2B: Celebration after clicking YES -->
           <div class="yay-box" id="yayBox">
             <h3 class="yay-title">Yayyy! ♡</h3>
-            
+
             <p class="yay-text">
               Yayyy! Aku seneng banget kamu mau jalan sama aku <span class="heart">♥</span>
             </p>
@@ -163,10 +169,11 @@
 
         <!-- Planner Card -->
         <div class="planner-card">
-          
+
           <!-- Header with optional Back Arrow & Step Subtitle -->
           <div class="plan-step-header">
-            <button class="btn-back-step" id="btnBackStep" type="button" title="Kembali ke langkah sebelumnya">&larr;</button>
+            <button class="btn-back-step" id="btnBackStep" type="button"
+              title="Kembali ke langkah sebelumnya">&larr;</button>
             <span class="step-subtitle" id="stepSubtitle">buat Lyxelle</span>
             <h2 class="step-title" id="stepTitle">Kapan sayangku free?</h2>
           </div>
@@ -174,7 +181,7 @@
           <!-- STEP 1: Date & Time -->
           <div class="wizard-step is-active" id="step1">
             <div class="step-body">
-              
+
               <!-- Date Selector Trigger -->
               <div class="date-selector-trigger" id="dateTrigger">
                 <span>📅 <span id="dateDisplayText">Sabtu, 27 Juni 2026</span></span>
@@ -265,7 +272,8 @@
 
               <!-- Custom Activity Input -->
               <div class="custom-input-box">
-                <input class="custom-input" id="customActivityInput" type="text" placeholder="atau tulis ide kamu..." maxlength="60">
+                <input class="custom-input" id="customActivityInput" type="text" placeholder="atau tulis ide kamu..."
+                  maxlength="60">
               </div>
             </div>
 
@@ -287,7 +295,8 @@
 
               <!-- Custom Dress Code Input -->
               <div class="custom-input-box">
-                <input class="custom-input" id="customDressInput" type="text" placeholder="atau tulis sendiri..." maxlength="60">
+                <input class="custom-input" id="customDressInput" type="text" placeholder="atau tulis sendiri..."
+                  maxlength="60">
               </div>
             </div>
 
@@ -299,7 +308,8 @@
           <!-- STEP 4: Personal Message -->
           <div class="wizard-step" id="step4">
             <div class="step-body">
-              <textarea class="message-textarea" id="personalMessageInput" placeholder="Tulis pesan kamu di sini...">mantap</textarea>
+              <textarea class="message-textarea" id="personalMessageInput"
+                placeholder="Tulis pesan kamu di sini..."></textarea>
             </div>
 
             <div class="step-footer">
@@ -343,7 +353,7 @@
                 <span class="ticket-row-icon">👤</span>
                 <div class="ticket-row-content">
                   <span class="ticket-row-label">UNTUK</span>
-                  <span class="ticket-row-val" id="ticketTargetName">Irfan</span>
+                  <span class="ticket-row-val" id="ticketTargetName">Ahmad</span>
                 </div>
               </div>
 
@@ -388,7 +398,7 @@
           <!-- Bottom Actions Section -->
           <div class="ticket-actions-section">
             <p class="ticket-share-hint" id="ticketShareHint">
-              Bagikan tiketnya ke Irfan ya - langsung jadi gambar
+              Bagikan tiketnya ke Ahmad ya - langsung jadi gambar
             </p>
 
             <div class="ticket-btn-row">
@@ -420,23 +430,24 @@
       <div class="modal-body">
         <div class="setting-field">
           <label for="inputSettingFrom">Nama Kamu (Pengirim):</label>
-          <input type="text" id="inputSettingFrom" value="Irfan" placeholder="Contoh: Irfan">
+          <input type="text" id="inputSettingFrom" value="Ahmad" placeholder="Contoh: Ahmad">
         </div>
 
         <div class="setting-field">
           <label for="inputSettingTo">Nama Pasangan (Penerima):</label>
-          <input type="text" id="inputSettingTo" value="Lyxelle" placeholder="Contoh: Lyxelle / Sayang">
+          <input type="text" id="inputSettingTo" value="your" placeholder="Contoh: you / Sayang">
         </div>
 
         <div class="setting-field">
           <label for="inputSettingPhone">Nomor WhatsApp Kamu (format internasional):</label>
-          <input type="tel" id="inputSettingPhone" value="6281234567890" placeholder="Contoh: 6281234567890">
+          <input type="tel" id="inputSettingPhone" value="081281278846" placeholder="Contoh: 08***********">
         </div>
       </div>
 
       <div class="modal-footer">
         <button class="btn-modal-save" id="btnSaveSettings" type="button">Simpan</button>
-        <button class="btn-modal-copy" id="btnCopyShareLink" type="button" title="Salin link yang sudah terisi nama">Salin Link</button>
+        <button class="btn-modal-copy" id="btnCopyShareLink" type="button"
+          title="Salin link yang sudah terisi nama">Salin Link</button>
       </div>
     </div>
   </div>
@@ -444,4 +455,5 @@
   <!-- JavaScript -->
   <script src="love.js"></script>
 </body>
+
 </html>
