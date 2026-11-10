@@ -40,8 +40,8 @@ Sistem interaktif **Date Planner & Love Letter** yang terinspirasi dari video Ti
 5. **Stage 5: Pengaturan Kustomisasi & Salin Link**
    - Tombol roda gigi ⚙️ di pojok kanan atas untuk mengubah:
      - Nama Pengirim (default: `Ahmad Paridi`)
-     - Nama Penerima (default: `Lyxelle`)
-     - Nomor WhatsApp tujuan (format internasional, misal: `6281234567890`)
+     - Nama Penerima (default: `Titisan Ilahi`)
+     - Nomor WhatsApp tujuan (default: `081281278846`)
    - Tombol **"Salin Link"**: Otomatis menyalin URL yang telah terpasang nama kamu & pasanganmu (`?from=...&to=...&phone=...`) sehingga bisa langsung dikirim ke pasanganmu tanpa perlu setting ulang!
 
 6. **Web Audio Synthesizer (Tanpa file audio eksternal)**

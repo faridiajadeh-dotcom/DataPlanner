@@ -11,9 +11,9 @@
      ========================================================================== */
   const DEFAULT_CONFIG = {
     senderName: 'Ahmad Paridi',
-    targetName: 'Lyxelle',
-    whatsappNumber: '6281234567890', // User can change in settings
-    envelopeTag: 'From Ahmad Paridi For You',
+    targetName: 'Titisan Ilahi',
+    whatsappNumber: '081281278846', // User can change in settings
+    envelopeTag: 'From Ahmad Paridi For Titisan Ilahi',
     dateText: 'Sabtu, 27 Juni 2026',
     timePeriod: 'Sore',
     timeText: '17:00',
@@ -28,7 +28,7 @@
     senderName: urlParams.get('from') || localStorage.getItem('dp_from') || DEFAULT_CONFIG.senderName,
     targetName: urlParams.get('to') || localStorage.getItem('dp_to') || DEFAULT_CONFIG.targetName,
     whatsappNumber: urlParams.get('phone') || localStorage.getItem('dp_phone') || DEFAULT_CONFIG.whatsappNumber,
-    envelopeTag: urlParams.get('tag') || `From ${urlParams.get('from') || DEFAULT_CONFIG.senderName} For You`,
+    envelopeTag: urlParams.get('tag') || `From ${urlParams.get('from') || DEFAULT_CONFIG.senderName} For ${urlParams.get('to') || DEFAULT_CONFIG.targetName}`,
     dateText: DEFAULT_CONFIG.dateText,
     timePeriod: DEFAULT_CONFIG.timePeriod,
     timeText: DEFAULT_CONFIG.timeText,
@@ -1096,8 +1096,8 @@
     btnSaveSettings.addEventListener('click', () => {
       playClick();
       config.senderName = inputSettingFrom?.value.trim() || 'Ahmad Paridi';
-      config.targetName = inputSettingTo?.value.trim() || 'Lyxelle';
-      config.whatsappNumber = inputSettingPhone?.value.trim() || '6281234567890';
+      config.targetName = inputSettingTo?.value.trim() || 'Titisan Ilahi';
+      config.whatsappNumber = inputSettingPhone?.value.trim() || '081281278846';
 
       localStorage.setItem('dp_from', config.senderName);
       localStorage.setItem('dp_to', config.targetName);
@@ -1105,7 +1105,7 @@
 
       // Update text in envelope
       const envTag = document.getElementById('envelopeTag');
-      if (envTag) envTag.innerHTML = `<span class="heart-badge">♥</span> From ${config.senderName} For You <span class="heart-badge">♥</span>`;
+      if (envTag) envTag.innerHTML = `<span class="heart-badge">♥</span> From ${config.senderName} For ${config.targetName} <span class="heart-badge">♥</span>`;
 
       updateStepUI();
       closeSettings();
@@ -1158,7 +1158,7 @@
   // Set initial tag text from config
   const envTag = document.getElementById('envelopeTag');
   if (envTag) {
-    envTag.innerHTML = `<span class="heart-badge">♥</span> From ${config.senderName} For You <span class="heart-badge">♥</span>`;
+    envTag.innerHTML = `<span class="heart-badge">♥</span> From ${config.senderName} For ${config.targetName} <span class="heart-badge">♥</span>`;
   }
 
 })();
