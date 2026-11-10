@@ -10,10 +10,10 @@
      1. CONFIGURATION & STATE
      ========================================================================== */
   const DEFAULT_CONFIG = {
-    senderName: 'Irfan',
+    senderName: 'Ahmad Paridi',
     targetName: 'Lyxelle',
     whatsappNumber: '6281234567890', // User can change in settings
-    envelopeTag: 'From Irfan For You',
+    envelopeTag: 'From Ahmad Paridi For You',
     dateText: 'Sabtu, 27 Juni 2026',
     timePeriod: 'Sore',
     timeText: '17:00',
@@ -1095,7 +1095,7 @@
   if (btnSaveSettings) {
     btnSaveSettings.addEventListener('click', () => {
       playClick();
-      config.senderName = inputSettingFrom?.value.trim() || 'Irfan';
+      config.senderName = inputSettingFrom?.value.trim() || 'Ahmad Paridi';
       config.targetName = inputSettingTo?.value.trim() || 'Lyxelle';
       config.whatsappNumber = inputSettingPhone?.value.trim() || '6281234567890';
 
