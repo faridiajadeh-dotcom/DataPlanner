@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>With Love ♥ - Date Planner</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💌</text></svg>">
+  
+  <!-- Google Fonts: Nunito (Modern clean), Caveat (Cute cursive), Fredoka (Rounded), VT323 (Retro pixel) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=VT323&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="love.css">
+</head>
+<body>
+
+  <!-- Floating Particles & Hearts -->
+  <div class="bg-particles" id="bgParticles" aria-hidden="true"></div>
+  
+  <!-- Confetti Explosion Layer -->
+  <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+
+  <!-- Top Controls: Sound Toggle & Settings Modal Button -->
+  <header class="top-controls">
+    <button class="icon-btn" id="btnToggleSound" title="Toggle Suara" aria-label="Toggle Sound">🔔</button>
+    <button class="icon-btn" id="btnOpenSettings" title="Pengaturan Nama & Nomor WhatsApp" aria-label="Settings">⚙️</button>
+  </header>
+
+  <!-- Main Interactive Scene -->
+  <main class="scene">
+
+    <!-- ====================================================================
+         STAGE 1: CUPID'S BOW & ARROW MINI-GAME (AIM & SHOOT)
+         ==================================================================== -->
+    <section class="stage--aim" id="stageAim" aria-label="Cupid Mini Game">
+      
+      <!-- Envelope Target -->
+      <div class="target-area" id="targetArea" title="Klik atau tembak panah ke amplop!">
+        <div class="envelope-wrapper">
+          <div class="envelope" id="envelope">
+            <div class="envelope__flap"></div>
+            <div class="envelope__pocket"></div>
+            <div class="envelope__pocket-border">
+              <svg viewBox="0 0 170 110" fill="none">
+                <path d="M 0 0 L 85 55 L 170 0" stroke="#4a383d" stroke-width="2.5" />
+                <path d="M 0 110 L 60 40" stroke="#f0d5db" stroke-width="1.5" />
+                <path d="M 170 110 L 110 40" stroke="#f0d5db" stroke-width="1.5" />
+              </svg>
+            </div>
+            <div class="envelope__seal" id="envelopeSeal">♥</div>
+          </div>
+        </div>
+        <div class="envelope__tag" id="envelopeTag">
+          <span class="heart-badge">♥</span> From Irfan For You <span class="heart-badge">♥</span>
+        </div>
+      </div>
+
+      <!-- Flying Arrow Animation Element -->
+      <div class="flying-arrow" id="flyingArrow" aria-hidden="true">
+        <div class="arrow-head"></div>
+        <div class="arrow-shaft"></div>
+        <div class="arrow-fletch"></div>
+      </div>
+
+      <!-- Archer / Cupid Bow & Arrow -->
+      <div class="archer-area">
+        <div class="bow-container" id="bowContainer" title="Tarik ke bawah dan lepaskan untuk menembak panah cinta!">
+          <!-- Resting Nocked Arrow -->
+          <div class="nocked-arrow" id="nockedArrow">
+            <div class="arrow-head"></div>
+            <div class="arrow-shaft"></div>
+            <div class="arrow-fletch"></div>
+          </div>
+          <svg class="bow-svg" viewBox="0 0 160 85">
+            <!-- Bow Wood Limb curving downward -->
+            <path d="M 25 30 Q 80 60 135 30" stroke="#d4a359" stroke-width="7" fill="none" stroke-linecap="round" />
+            <path d="M 25 30 Q 80 60 135 30" stroke="#9e7232" stroke-width="2.5" fill="none" stroke-linecap="round" />
+            <!-- Leather Handle Grip in Center -->
+            <rect x="72" y="42" width="16" height="9" rx="2" fill="#7a4b26" stroke="#523218" stroke-width="1" />
+            <!-- Bow String (Draggable downward) -->
+            <path id="bowString" d="M 25 30 Q 80 30 135 30" stroke="#f6edd9" stroke-width="2.5" fill="none" />
+            <!-- Arrow Nock Center Guide -->
+            <circle id="bowNock" cx="80" cy="30" r="4.5" fill="#e63946" stroke="#fff" stroke-width="1.5" />
+          </svg>
+        </div>
+        <p class="hint-box" id="hintBox">
+          <span id="hintText">Aim &amp; release to shoot Cupid's arrow</span>
+          <span class="heart--inline">♥</span>
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ====================================================================
+         STAGE 2: RETRO "PLEASE" WINDOW & PIXEL CAT
+         ==================================================================== -->
+    <section class="window-container" id="windowContainer" aria-label="Proposal Window">
+      <div class="retro-window">
+        <!-- Titlebar -->
+        <header class="titlebar">
+          <span class="titlebar__name">PLEASE</span>
+          <div class="titlebar__btns">
+            <button class="winbtn" type="button" aria-label="Minimize">_</button>
+            <button class="winbtn" type="button" aria-label="Maximize">□</button>
+            <button class="winbtn winbtn--x" type="button" aria-label="Close">✕</button>
+          </div>
+        </header>
+
+        <div class="titlebar-subhearts" aria-hidden="true">♥ • ♥ • ♥</div>
+
+        <!-- Inner White Card -->
+        <div class="window-inner" id="windowInner">
+          
+          <!-- State 2A: The Question -->
+          <div id="askBox">
+            <h2 class="ask-heading">Mau jalan-jalan bareng aku ga?</h2>
+            
+            <!-- Pixel Art Animated Cat Canvas -->
+            <div class="pixel-cat-wrap">
+              <canvas id="catCanvas" class="pixel-cat-canvas" width="128" height="112" aria-label="Pixel Cat"></canvas>
+            </div>
+
+            <!-- YES and Runaway NO Buttons -->
+            <div class="btn-row">
+              <button class="btn-choice btn-choice--yes" id="btnYes" type="button">YES</button>
+              <button class="btn-choice btn-choice--no" id="btnNo" type="button">NO</button>
+            </div>
+          </div>
+
+          <!-- State 2B: Celebration after clicking YES -->
+          <div class="yay-box" id="yayBox">
+            <h3 class="yay-title">Yayyy! ♡</h3>
+            
+            <p class="yay-text">
+              Yayyy! Aku seneng banget kamu mau jalan sama aku <span class="heart">♥</span>
+            </p>
+
+            <button class="btn-pill-next" id="nextToPlanner" type="button">
+              Lanjut &rarr;
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         STAGE 3: DATE PLANNER MULTI-STEP WIZARD
+         ==================================================================== -->
+    <section class="planner-container" id="plannerContainer" aria-label="Date Planner Wizard">
+      <div class="retro-window">
+        <!-- Titlebar -->
+        <header class="titlebar">
+          <span class="titlebar__name">DATE PLANNER</span>
+          <div class="titlebar__btns">
+            <button class="winbtn winbtn--x" type="button" aria-label="Close">✕</button>
+          </div>
+        </header>
+
+        <!-- Planner Card -->
+        <div class="planner-card">
+          
+          <!-- Header with optional Back Arrow & Step Subtitle -->
+          <div class="plan-step-header">
+            <button class="btn-back-step" id="btnBackStep" type="button" title="Kembali ke langkah sebelumnya">&larr;</button>
+            <span class="step-subtitle" id="stepSubtitle">buat Lyxelle</span>
+            <h2 class="step-title" id="stepTitle">Kapan sayangku free?</h2>
+          </div>
+
+          <!-- STEP 1: Date & Time -->
+          <div class="wizard-step is-active" id="step1">
+            <div class="step-body">
+              
+              <!-- Date Selector Trigger -->
+              <div class="date-selector-trigger" id="dateTrigger">
+                <span>📅 <span id="dateDisplayText">Sabtu, 27 Juni 2026</span></span>
+                <span>▾</span>
+              </div>
+
+              <!-- Time of Day Chips -->
+              <div class="time-period-group">
+                <button class="time-chip" type="button" data-period="Pagi">Pagi</button>
+                <button class="time-chip" type="button" data-period="Siang">Siang</button>
+                <button class="time-chip is-selected" type="button" data-period="Sore">Sore</button>
+                <button class="time-chip" type="button" data-period="Malam">Malam</button>
+              </div>
+
+              <!-- Time Picker Trigger -->
+              <div class="time-display-box" id="timeDisplayBox">
+                <span id="timeDisplayText">17:00</span>
+                <span>🕒</span>
+              </div>
+
+              <!-- Interactive Calendar Popover -->
+              <div class="calendar-popover" id="calPopover">
+                <div class="cal-header">
+                  <button class="cal-btn" id="calPrev" type="button">&lsaquo;</button>
+                  <span class="cal-title" id="calMonthTitle">Juni 2026</span>
+                  <button class="cal-btn" id="calNext" type="button">&rsaquo;</button>
+                </div>
+                <div class="cal-weekdays">
+                  <span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span>
+                </div>
+                <div class="cal-days" id="calDaysGrid"></div>
+              </div>
+
+              <!-- Interactive Time Wheel Popover -->
+              <div class="time-wheel-popover" id="timeWheelPopover">
+                <div class="time-wheel-cols">
+                  <div class="wheel-col" id="wheelHours"></div>
+                  <span class="wheel-colon">:</span>
+                  <div class="wheel-col" id="wheelMins"></div>
+                </div>
+                <button class="popover-btn-apply" id="btnApplyTime" type="button">Pilih Jam</button>
+              </div>
+
+            </div>
+
+            <div class="step-footer">
+              <button class="btn-pill-next" id="btnStep1Next" type="button">Lanjut &rarr;</button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Activities Grid -->
+          <div class="wizard-step" id="step2">
+            <div class="step-body">
+              <div class="activities-grid">
+                <div class="act-card" data-act="Makan Malam">
+                  <span class="act-icon">🍽️</span>
+                  <span class="act-label">Makan Malam</span>
+                </div>
+                <div class="act-card is-selected" data-act="Nonton Film">
+                  <span class="act-icon">🎬</span>
+                  <span class="act-label">Nonton Film</span>
+                </div>
+                <div class="act-card" data-act="Jalan-Jalan">
+                  <span class="act-icon">📍</span>
+                  <span class="act-label">Jalan-Jalan</span>
+                </div>
+                <div class="act-card is-selected" data-act="Main Game">
+                  <span class="act-icon">🎮</span>
+                  <span class="act-label">Main Game</span>
+                </div>
+                <div class="act-card" data-act="Belanja">
+                  <span class="act-icon">🛍️</span>
+                  <span class="act-label">Belanja</span>
+                </div>
+                <div class="act-card is-selected" data-act="Ngopi Bareng">
+                  <span class="act-icon">☕</span>
+                  <span class="act-label">Ngopi Bareng</span>
+                </div>
+                <div class="act-card" data-act="Melukis">
+                  <span class="act-icon">🎨</span>
+                  <span class="act-label">Melukis</span>
+                </div>
+                <div class="act-card" data-act="Konser">
+                  <span class="act-icon">🎵</span>
+                  <span class="act-label">Konser</span>
+                </div>
+              </div>
+
+              <!-- Custom Activity Input -->
+              <div class="custom-input-box">
+                <input class="custom-input" id="customActivityInput" type="text" placeholder="atau tulis ide kamu..." maxlength="60">
+              </div>
+            </div>
+
+            <div class="step-footer">
+              <button class="btn-pill-next" id="btnStep2Next" type="button">Oke &rarr;</button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Dress Code -->
+          <div class="wizard-step" id="step3">
+            <div class="step-body">
+              <div class="dress-code-group">
+                <button class="dress-chip" type="button" data-dress="Casual">Casual</button>
+                <button class="dress-chip" type="button" data-dress="Semi-Formal">Semi-Formal</button>
+                <button class="dress-chip" type="button" data-dress="Couple Outfit">Couple Outfit</button>
+                <button class="dress-chip" type="button" data-dress="Formal">Formal</button>
+                <button class="dress-chip is-selected" type="button" data-dress="Bebas">Bebas</button>
+              </div>
+
+              <!-- Custom Dress Code Input -->
+              <div class="custom-input-box">
+                <input class="custom-input" id="customDressInput" type="text" placeholder="atau tulis sendiri..." maxlength="60">
+              </div>
+            </div>
+
+            <div class="step-footer">
+              <button class="btn-pill-next" id="btnStep3Next" type="button">Lanjut &rarr;</button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Personal Message -->
+          <div class="wizard-step" id="step4">
+            <div class="step-body">
+              <textarea class="message-textarea" id="personalMessageInput" placeholder="Tulis pesan kamu di sini...">mantap</textarea>
+            </div>
+
+            <div class="step-footer">
+              <button class="btn-pill-next" id="btnGenerateTicket" type="button">Bikin tiketnya 🎟️</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         STAGE 4: THE TICKET RESULT (TIKET KENCAN)
+         ==================================================================== -->
+    <section class="ticket-stage" id="ticketStage" aria-label="Tiket Kencan">
+      <div class="retro-window">
+        <!-- Titlebar -->
+        <header class="titlebar">
+          <span class="titlebar__name">DATE PLANNER</span>
+          <div class="titlebar__btns">
+            <button class="winbtn winbtn--x" type="button" aria-label="Close">✕</button>
+          </div>
+        </header>
+
+        <!-- Window Inner with Ticket -->
+        <div class="window-inner" style="padding: 16px 14px;">
+          <h2 class="ticket-yay-heading">Yeay, it's a date!</h2>
+
+          <!-- Boarding Pass Ticket Card -->
+          <div class="ticket-card" id="ticketCard">
+            <div class="ticket-top-bar">
+              <span class="ticket-admit">ADMIT TWO</span>
+              <span class="ticket-heart-badge">♥</span>
+            </div>
+
+            <h3 class="ticket-title">Tiket kencan</h3>
+            <div class="ticket-perforated-line"></div>
+
+            <div class="ticket-details-list">
+              <div class="ticket-row">
+                <span class="ticket-row-icon">👤</span>
+                <div class="ticket-row-content">
+                  <span class="ticket-row-label">UNTUK</span>
+                  <span class="ticket-row-val" id="ticketTargetName">Irfan</span>
+                </div>
+              </div>
+
+              <div class="ticket-row">
+                <span class="ticket-row-icon">📅</span>
+                <div class="ticket-row-content">
+                  <span class="ticket-row-label">KAPAN</span>
+                  <span class="ticket-row-val" id="ticketDateTime">Sabtu, 27 Juni 2026 • Sore • 17:00</span>
+                </div>
+              </div>
+
+              <div class="ticket-row">
+                <span class="ticket-row-icon">🟡</span>
+                <div class="ticket-row-content">
+                  <span class="ticket-row-label">ACARA</span>
+                  <span class="ticket-row-val" id="ticketActivities">Nonton Film, Main Game, Ngopi Bareng</span>
+                </div>
+              </div>
+
+              <div class="ticket-row">
+                <span class="ticket-row-icon">👗</span>
+                <div class="ticket-row-content">
+                  <span class="ticket-row-label">DRESS CODE</span>
+                  <span class="ticket-row-val" id="ticketDressCode">Bebas</span>
+                </div>
+              </div>
+
+              <div class="ticket-row">
+                <span class="ticket-row-icon">💭</span>
+                <div class="ticket-row-content">
+                  <span class="ticket-row-label">PESAN</span>
+                  <span class="ticket-row-val" id="ticketMessage">mantap</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ticket-quote">
+              Would you like to go out with me?
+            </div>
+          </div>
+
+          <!-- Bottom Actions Section -->
+          <div class="ticket-actions-section">
+            <p class="ticket-share-hint" id="ticketShareHint">
+              Bagikan tiketnya ke Irfan ya - langsung jadi gambar
+            </p>
+
+            <div class="ticket-btn-row">
+              <button class="btn-ticket-download" id="btnDownloadTicket" type="button">
+                📥 Bagikan tiket
+              </button>
+              <a class="btn-ticket-wa" id="btnWhatsApp" href="#" target="_blank" rel="noopener">
+                💬 Chat WhatsApp
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       SETTINGS MODAL (CUSTOMIZE NAMES & WHATSAPP)
+       ==================================================================== -->
+  <div class="modal-backdrop" id="settingsModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>⚙️ Pengaturan Date Planner</h3>
+        <button class="winbtn winbtn--x" id="btnCloseSettings" type="button">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="setting-field">
+          <label for="inputSettingFrom">Nama Kamu (Pengirim):</label>
+          <input type="text" id="inputSettingFrom" value="Irfan" placeholder="Contoh: Irfan">
+        </div>
+
+        <div class="setting-field">
+          <label for="inputSettingTo">Nama Pasangan (Penerima):</label>
+          <input type="text" id="inputSettingTo" value="Lyxelle" placeholder="Contoh: Lyxelle / Sayang">
+        </div>
+
+        <div class="setting-field">
+          <label for="inputSettingPhone">Nomor WhatsApp Kamu (format internasional):</label>
+          <input type="tel" id="inputSettingPhone" value="6281234567890" placeholder="Contoh: 6281234567890">
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-modal-save" id="btnSaveSettings" type="button">Simpan</button>
+        <button class="btn-modal-copy" id="btnCopyShareLink" type="button" title="Salin link yang sudah terisi nama">Salin Link</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="love.js"></script>
+</body>
+</html>
